@@ -2,11 +2,13 @@ package rbc.com.rbcapi
 
 import android.util.Base64
 import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 
 /**
@@ -46,6 +48,12 @@ object RestClient {
 
         @GET(URLS.URL_GET_PRODUCT_FAMILIES)
         fun getProductFamilies(): Call<JsonArray>
+
+        @GET(URLS.URL_GET_PRODUCT_FAMILY+"{family}")
+        fun getProductFamily(@Path("family") family: String): Call<JsonObject>
+
+        @GET(URLS.URL_GET_PRODUCT+"{product}")
+        fun getProduct(@Path("product") product: String): Call<JsonObject>
 
     }
 
